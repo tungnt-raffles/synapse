@@ -1,5 +1,5 @@
 {
-	"name": "PersonAzureSqlToSynapse",
+	"name": "Test",
 	"properties": {
 		"activities": [
 			{
@@ -76,7 +76,7 @@
 			}
 		},
 		"folder": {
-			"name": "Person"
+			"name": "Test"
 		},
 		"annotations": [],
 		"lastPublishTime": "2022-09-29T08:20:44Z"

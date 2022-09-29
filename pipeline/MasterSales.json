@@ -1,5 +1,5 @@
 {
-	"name": "SalesAzureSqlToSynapse",
+	"name": "MasterSales",
 	"properties": {
 		"activities": [
 			{
