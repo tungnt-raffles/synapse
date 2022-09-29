@@ -1,0 +1,17 @@
+{
+	"name": "RafflesOracleOnPremiseDB",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "RafflesOracleOnPremiseIR",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "OracleTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "test"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

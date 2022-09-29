@@ -1,0 +1,80 @@
+{
+	"name": "AdlsCsvToSynapse",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "SqlPoolSink",
+						"writeBehavior": "Insert",
+						"sqlWriterUseTableLock": false,
+						"tableOption": "autoCreate"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "RafflesAdlsCsv",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "RafflesSqlPool",
+						"type": "DatasetReference",
+						"parameters": {
+							"schema": "dbo",
+							"table": "customer4"
+						}
+					}
+				]
+			}
+		],
+		"parameters": {
+			"table": {
+				"type": "string",
+				"defaultValue": "customer"
+			},
+			"partition": {
+				"type": "string",
+				"defaultValue": "/2022/08/31/"
+			}
+		},
+		"folder": {
+			"name": "GenericPipeline"
+		},
+		"annotations": [],
+		"lastPublishTime": "2022-09-29T04:33:15Z"
+	},
+	"type": "Microsoft.Synapse/workspaces/pipelines"
+}

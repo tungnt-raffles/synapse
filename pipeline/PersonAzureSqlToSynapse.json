@@ -1,0 +1,85 @@
+{
+	"name": "PersonAzureSqlToSynapse",
+	"properties": {
+		"activities": [
+			{
+				"name": "FullLoad",
+				"type": "ForEach",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@pipeline().parameters.table_list_full_load",
+						"type": "Expression"
+					},
+					"isSequential": false,
+					"activities": [
+						{
+							"name": "AzureSqlToSynapse",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "AzureSqlToSynapse",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"source_schema": {
+										"value": "@pipeline().parameters.source_schema",
+										"type": "Expression"
+									},
+									"source_table": {
+										"value": "@item()",
+										"type": "Expression"
+									},
+									"target_schema": {
+										"value": "@pipeline().parameters.target_schema",
+										"type": "Expression"
+									},
+									"target_table": {
+										"value": "@item()",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"table_list_full_load": {
+				"type": "array",
+				"defaultValue": [
+					"Person",
+					"PersonPhone"
+				]
+			},
+			"source_schema": {
+				"type": "string",
+				"defaultValue": "Person"
+			},
+			"target_schema": {
+				"type": "string",
+				"defaultValue": "LandingPerson"
+			}
+		},
+		"variables": {
+			"table_list": {
+				"type": "Array",
+				"defaultValue": [
+					"Currency",
+					"CreditCard"
+				]
+			}
+		},
+		"folder": {
+			"name": "Person"
+		},
+		"annotations": [],
+		"lastPublishTime": "2022-09-29T08:20:44Z"
+	},
+	"type": "Microsoft.Synapse/workspaces/pipelines"
+}

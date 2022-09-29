@@ -1,0 +1,33 @@
+{
+	"name": "RafflesAzureSqlTable",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "RafflesLinkedServiceAzureSqlDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"schema": {
+				"type": "string",
+				"defaultValue": "Person"
+			},
+			"table": {
+				"type": "string",
+				"defaultValue": "Person"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": {
+				"value": "@dataset().schema",
+				"type": "Expression"
+			},
+			"table": {
+				"value": "@dataset().table",
+				"type": "Expression"
+			}
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

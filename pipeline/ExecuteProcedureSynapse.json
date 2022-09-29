@@ -1,0 +1,42 @@
+{
+	"name": "ExecuteProcedureSynapse",
+	"properties": {
+		"activities": [
+			{
+				"name": "ExecuteProcedureSynapse",
+				"type": "SqlPoolStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"sqlPool": {
+					"referenceName": "raffles_synapse",
+					"type": "SqlPoolReference"
+				},
+				"typeProperties": {
+					"storedProcedureName": {
+						"value": "@pipeline().parameters.procedure_name",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"parameters": {
+			"procedure_name": {
+				"type": "string",
+				"defaultValue": "Curated.ProcedureSales"
+			}
+		},
+		"folder": {
+			"name": "GenericPipeline"
+		},
+		"annotations": [],
+		"lastPublishTime": "2022-09-29T10:49:44Z"
+	},
+	"type": "Microsoft.Synapse/workspaces/pipelines"
+}

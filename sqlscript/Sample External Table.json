@@ -1,0 +1,17 @@
+{
+	"name": "Sample External Table",
+	"properties": {
+		"content": {
+			"query": "\nIF NOT EXISTS (SELECT * FROM sys.external_file_formats WHERE name = 'SynapseDelimitedTextFormat') \n\tCREATE EXTERNAL FILE FORMAT [SynapseDelimitedTextFormat] \n\tWITH ( FORMAT_TYPE = DELIMITEDTEXT ,\n\t       FORMAT_OPTIONS (\n\t\t\t FIELD_TERMINATOR = ',',\n\t\t\t USE_TYPE_DEFAULT = FALSE,\n\t\t\t FIRST_ROW = 2\n\t\t\t))\nGO\n\nIF NOT EXISTS (SELECT * FROM sys.external_data_sources WHERE name = 'landing_rafflesadls_dfs_core_windows_net') \n\tCREATE EXTERNAL DATA SOURCE [landing_rafflesadls_dfs_core_windows_net] \n\tWITH (\n\t\tLOCATION = 'abfss://landing@rafflesadls.dfs.core.windows.net' \n\t)\nGO\n\ndrop EXTERNAL TABLE dev.dbo.example_table2\n\nCREATE EXTERNAL TABLE dev.dbo.example_table2 (\n\t[card_id] nvarchar(4000),\n\t[disp_id] nvarchar(4000),\n\t[type] nvarchar(4000),\n\t[year] bigint,\n\t[month] bigint,\n\t[day] bigint,\n\t[fulldate] date\n\t)\n\tWITH (\n\tLOCATION = 'example_table/**',\n\tDATA_SOURCE = [landing_rafflesadls_dfs_core_windows_net],\n\tFILE_FORMAT = [SynapseDelimitedTextFormat]\n\t)\nGO\n\n\nSELECT TOP 100 * FROM dbo.example_table2\nGO",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "dev",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
