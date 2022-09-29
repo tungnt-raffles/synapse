@@ -1,0 +1,55 @@
+{
+	"name": "LandingBank",
+	"properties": {
+		"activities": [
+			{
+				"name": "LandingCard",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "AdlsCsvToSynapseCard",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
+						"partition": {
+							"value": "@pipeline().parameters.partition",
+							"type": "Expression"
+						}
+					}
+				}
+			},
+			{
+				"name": "LandingCustomer",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "AdlsCsvToSynapseCustomer",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
+						"partition": {
+							"value": "@pipeline().parameters.partition",
+							"type": "Expression"
+						}
+					}
+				}
+			}
+		],
+		"parameters": {
+			"partition": {
+				"type": "string",
+				"defaultValue": "/2022/08/30"
+			}
+		},
+		"folder": {
+			"name": "Bank"
+		},
+		"annotations": []
+	}
+}

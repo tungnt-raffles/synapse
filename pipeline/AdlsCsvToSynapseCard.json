@@ -1386,28 +1386,14 @@
 						"referenceName": "RafflesSynapseTable",
 						"type": "DatasetReference",
 						"parameters": {
-							"schema": {
-								"value": "@pipeline().parameters.target_schema",
-								"type": "Expression"
-							},
-							"table": {
-								"value": "@pipeline().parameters.target_table",
-								"type": "Expression"
-							}
+							"schema": "LandingBank",
+							"table": "Card"
 						}
 					}
 				]
 			}
 		],
 		"parameters": {
-			"target_schema": {
-				"type": "string",
-				"defaultValue": "LandingBank"
-			},
-			"target_table": {
-				"type": "string",
-				"defaultValue": "Card"
-			},
 			"partition": {
 				"type": "string",
 				"defaultValue": "/2022/08/30"
