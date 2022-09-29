@@ -13,6 +13,9 @@
 				"type": "string"
 			}
 		},
+		"folder": {
+			"name": "Generic"
+		},
 		"annotations": [],
 		"type": "AzureSqlDWTable",
 		"schema": [],

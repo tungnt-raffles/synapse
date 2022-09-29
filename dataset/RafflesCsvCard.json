@@ -1,27 +1,25 @@
 {
-	"name": "RafflesAdlsCsv",
+	"name": "RafflesCsvCard",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "raffles-synapse-WorkspaceDefaultStorage",
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
-			"name": "Generic"
+			"name": "Specific"
 		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "_t24_customer___20220831_10.csv",
-				"folderPath": "customer/2022/08/31",
+				"fileName": "W4_OWS_ACNT_CONTRACT__20220831.csv",
+				"folderPath": "card/2022/08/31",
 				"fileSystem": "landing"
 			},
 			"columnDelimiter": ",",
-			"encodingName": "UTF-8",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
-			"nullValue": "x",
 			"quoteChar": "\""
 		},
 		"schema": [
@@ -494,6 +492,5 @@
 				"type": "String"
 			}
 		]
-	},
-	"type": "Microsoft.Synapse/workspaces/datasets"
+	}
 }

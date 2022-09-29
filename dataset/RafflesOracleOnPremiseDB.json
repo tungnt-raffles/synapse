@@ -5,6 +5,9 @@
 			"referenceName": "RafflesOracleOnPremiseIR",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "Generic"
+		},
 		"annotations": [],
 		"type": "OracleTable",
 		"schema": [],

@@ -15,6 +15,9 @@
 				"defaultValue": "Person"
 			}
 		},
+		"folder": {
+			"name": "Generic"
+		},
 		"annotations": [],
 		"type": "AzureSqlTable",
 		"schema": [],
