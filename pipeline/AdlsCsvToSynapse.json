@@ -51,7 +51,7 @@
 						"referenceName": "RafflesAdlsCsv",
 						"type": "DatasetReference",
 						"parameters": {
-							"partition": "/2022/08/30"
+							"file_system": "landing"
 						}
 					}
 				],

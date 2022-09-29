@@ -5,6 +5,12 @@
 			"referenceName": "raffles-synapse-WorkspaceDefaultStorage",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"file_system": {
+				"type": "string",
+				"defaultValue": "landing"
+			}
+		},
 		"folder": {
 			"name": "Generic"
 		},
@@ -13,7 +19,10 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileSystem": "landing"
+				"fileSystem": {
+					"value": "@dataset().file_system",
+					"type": "Expression"
+				}
 			},
 			"columnDelimiter": ",",
 			"encodingName": "UTF-8",
