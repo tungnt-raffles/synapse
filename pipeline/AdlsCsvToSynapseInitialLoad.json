@@ -1,0 +1,1471 @@
+{
+	"name": "AdlsCsvToSynapseInitialLoad",
+	"properties": {
+		"activities": [
+			{
+				"name": "AdlsCsvToSynapseInitialLoad",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "SqlDWSink",
+						"writeBehavior": "Insert",
+						"sqlWriterUseTableLock": false,
+						"tableOption": "autoCreate",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "DATA_DATE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "DATA_DATE",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AMND_DATE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "AMND_DATE",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AMND_STATE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "AMND_STATE",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AMND_OFFICER",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "AMND_OFFICER",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AMND_PREV",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "AMND_PREV",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ID",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PCAT",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "PCAT",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CON_CAT",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CON_CAT",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TERMINAL_CATEGORY",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "TERMINAL_CATEGORY",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CCAT",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CCAT",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "F_I",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "F_I",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BRANCH",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "BRANCH",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SERVICE_GROUP",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "SERVICE_GROUP",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CONTRACT_NUMBER",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CONTRACT_NUMBER",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BASE_RELATION",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "BASE_RELATION",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CONTRACT_NAME",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CONTRACT_NAME",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "COMMENT_TEXT",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "COMMENT_TEXT",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RELATION_TAG",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "RELATION_TAG",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ACNT_CONTRACT__ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ACNT_CONTRACT__ID",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CONTR_TYPE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CONTR_TYPE",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CONTR_SUBTYPE__ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CONTR_SUBTYPE__ID",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SERV_PACK__ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "SERV_PACK__ID",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ACC_SCHEME__ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ACC_SCHEME__ID",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OLD_PACK",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "OLD_PACK",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CHANNEL",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CHANNEL",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OLD_SCHEME",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "OLD_SCHEME",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRODUCT",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "PRODUCT",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PARENT_PRODUCT",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "PARENT_PRODUCT",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRODUCT_PREV",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "PRODUCT_PREV",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MAIN_PRODUCT",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "MAIN_PRODUCT",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LIAB_CATEGORY",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "LIAB_CATEGORY",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CLIENT__ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CLIENT__ID",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CLIENT_TYPE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CLIENT_TYPE",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ACNT_CONTRACT__OID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ACNT_CONTRACT__OID",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LIAB_CONTRACT",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "LIAB_CONTRACT",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LIAB_CONTRACT_PREV",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "LIAB_CONTRACT_PREV",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BILLING_CONTRACT",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "BILLING_CONTRACT",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BEHAVIOR_GROUP",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "BEHAVIOR_GROUP",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BEHAVIOR_TYPE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "BEHAVIOR_TYPE",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BEHAVIOR_TYPE_PREV",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "BEHAVIOR_TYPE_PREV",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CHECK_AVAILABLE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CHECK_AVAILABLE",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CHECK_USAGE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CHECK_USAGE",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CURR",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CURR",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OLD_CURR",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "OLD_CURR",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AUTH_LIMIT_AMOUNT",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "AUTH_LIMIT_AMOUNT",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BASE_AUTH_LIMIT",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "BASE_AUTH_LIMIT",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LIAB_BALANCE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "LIAB_BALANCE",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LIAB_BLOCKED",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "LIAB_BLOCKED",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OWN_BALANCE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "OWN_BALANCE",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OWN_BLOCKED",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "OWN_BLOCKED",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SUB_BALANCE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "SUB_BALANCE",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SUB_BLOCKED",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "SUB_BLOCKED",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TOTAL_BLOCKED",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "TOTAL_BLOCKED",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TOTAL_BALANCE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "TOTAL_BALANCE",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SHARED_BALANCE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "SHARED_BALANCE",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SHARED_BLOCKED",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "SHARED_BLOCKED",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AMOUNT_AVAILABLE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "AMOUNT_AVAILABLE",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DATE_OPEN",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "DATE_OPEN",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DATE_EXPIRE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "DATE_EXPIRE",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LAST_BILLING_DATE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "LAST_BILLING_DATE",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "NEXT_BILLING_DATE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "NEXT_BILLING_DATE",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LAST_SCAN",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "LAST_SCAN",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CARD_EXPIRE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CARD_EXPIRE",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRODUCTION_STATUS",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "PRODUCTION_STATUS",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RBS_MEMBER_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "RBS_MEMBER_ID",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RBS_NUMBER",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "RBS_NUMBER",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "REPORT_TYPE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "REPORT_TYPE",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MAX_PIN_ATTEMPTS",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "MAX_PIN_ATTEMPTS",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PIN_ATTEMPTS",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "PIN_ATTEMPTS",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RISK_SCHEME",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "RISK_SCHEME",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CHIP_SCHEME",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CHIP_SCHEME",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RISK_FACTOR",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "RISK_FACTOR",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RISK_FACTOR_PREV",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "RISK_FACTOR_PREV",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CONTR_STATUS",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CONTR_STATUS",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MERCHANT_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "MERCHANT_ID",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TR_TITLE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "TR_TITLE",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TR_COMPANY",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "TR_COMPANY",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TR_COUNTRY",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "TR_COUNTRY",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TR_FIRST_NAM",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "TR_FIRST_NAM",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TR_LAST_NAM",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "TR_LAST_NAM",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TR_SIC",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "TR_SIC",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ADD_INFO_01",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ADD_INFO_01",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ADD_INFO_02",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ADD_INFO_02",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ADD_INFO_03",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ADD_INFO_03",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ADD_INFO_04",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ADD_INFO_04",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CONTRACT_LEVEL",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CONTRACT_LEVEL",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EXT_DATA",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "EXT_DATA",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "REPORT_ADDRESS",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "REPORT_ADDRESS",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SHARE_BALANCE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "SHARE_BALANCE",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "IS_MULTYCURRENCY",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "IS_MULTYCURRENCY",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ENABLES_ITEM",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ENABLES_ITEM",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CYCLE_LENGTH",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CYCLE_LENGTH",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INTERVAL_TYPE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "INTERVAL_TYPE",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "STATUS_CATEGORY",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "STATUS_CATEGORY",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LIMIT_IS_ACTIVE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "LIMIT_IS_ACTIVE",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ROUTING_IDT",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ROUTING_IDT",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "IS_READY",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "IS_READY",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SETTLEMENT_TYPE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "SETTLEMENT_TYPE",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AUTH_SEQ_N",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "AUTH_SEQ_N",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "APPLY_DT",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "APPLY_DT",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LOCAL_VERSION",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "LOCAL_VERSION",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "REMOTE_VERSION",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "REMOTE_VERSION",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRE_APPRV_CARD_FLAG",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "PRE_APPRV_CARD_FLAG",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CARD_CLASSIFIER_CODE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CARD_CLASSIFIER_CODE",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CARD_CLASSIFIER_NAME",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CARD_CLASSIFIER_NAME",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "POLICY_CLASSIFIER_CODE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "POLICY_CLASSIFIER_CODE",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "POLICY_CLASSIFIER_NAME",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "POLICY_CLASSIFIER_NAME",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ORGANIZATION_LINKED_CODE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ORGANIZATION_LINKED_CODE",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ORGANIZATION_LINKED_NAME",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ORGANIZATION_LINKED_NAME",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PROVISION_INDICATOR_CODE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "PROVISION_INDICATOR_CODE",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRODUCT_TYPE_CODE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "PRODUCT_TYPE_CODE",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CARD_PIN_DELIVERY_STATUS_CODE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CARD_PIN_DELIVERY_STATUS_CODE",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DEBT_LEVEL_CODE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "DEBT_LEVEL_CODE",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DEBT_LEVEL_BY_LATE_DATE_CODE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "DEBT_LEVEL_BY_LATE_DATE_CODE",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FOLLOW_DEBT_LEVEL_CODE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "FOLLOW_DEBT_LEVEL_CODE",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BOVD_CAT_CODE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "BOVD_CAT_CODE",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INTEREST_RATE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "INTEREST_RATE",
+									"type": "String",
+									"physicalType": "String"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "RafflesCsvCard",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "RafflesSynapseTable",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "GenericPipeline"
+		},
+		"annotations": []
+	}
+}
