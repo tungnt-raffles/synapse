@@ -17,6 +17,19 @@
 				"typeProperties": {
 					"source": {
 						"type": "DelimitedTextSource",
+						"additionalColumns": [
+							{
+								"name": "file_path",
+								"value": "$$FILEPATH"
+							},
+							{
+								"name": "etl_job_date",
+								"value": {
+									"value": "@{formatDateTime(utcnow(), 'yyyyMMdd')}",
+									"type": "Expression"
+								}
+							}
+						],
 						"storeSettings": {
 							"type": "AzureBlobFSReadSettings",
 							"recursive": true,

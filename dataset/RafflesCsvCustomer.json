@@ -5,6 +5,12 @@
 			"referenceName": "raffles-synapse-WorkspaceDefaultStorage",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"file_system": {
+				"type": "string",
+				"defaultValue": "landing"
+			}
+		},
 		"folder": {
 			"name": "Specific"
 		},
@@ -15,7 +21,10 @@
 				"type": "AzureBlobFSLocation",
 				"fileName": "_t24_customer___20220831.csv",
 				"folderPath": "customer/2022/08/31",
-				"fileSystem": "landing"
+				"fileSystem": {
+					"value": "@dataset().file_system",
+					"type": "Expression"
+				}
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
@@ -24,384 +33,511 @@
 		},
 		"schema": [
 			{
+				"name": "MONTH_DAY",
 				"type": "String"
 			},
 			{
+				"name": "ID",
 				"type": "String"
 			},
 			{
+				"name": "DATA_DATE",
 				"type": "String"
 			},
 			{
+				"name": "T_MNEMONIC",
 				"type": "String"
 			},
 			{
+				"name": "T_SHORT_NAME",
 				"type": "String"
 			},
 			{
+				"name": "T_NAME_1",
 				"type": "String"
 			},
 			{
+				"name": "T_NAME_2",
 				"type": "String"
 			},
 			{
+				"name": "T_ADDRESS",
 				"type": "String"
 			},
 			{
+				"name": "T_TOWN_COUNTRY",
 				"type": "String"
 			},
 			{
+				"name": "T_POST_CODE",
 				"type": "String"
 			},
 			{
+				"name": "T_COUNTRY",
 				"type": "String"
 			},
 			{
+				"name": "T_SECTOR",
 				"type": "String"
 			},
 			{
+				"name": "T_ACCOUNT_OFFICER",
 				"type": "String"
 			},
 			{
+				"name": "T_INDUSTRY",
 				"type": "String"
 			},
 			{
+				"name": "T_TARGET",
 				"type": "String"
 			},
 			{
+				"name": "T_CUSTOMER_STATUS",
 				"type": "String"
 			},
 			{
+				"name": "T_NATIONALITY",
 				"type": "String"
 			},
 			{
+				"name": "T_RESIDENCE",
 				"type": "String"
 			},
 			{
+				"name": "T_CUSTOMER_LIABILITY",
 				"type": "String"
 			},
 			{
+				"name": "T_BIRTH_INCORP_DATE",
 				"type": "String"
 			},
 			{
+				"name": "T_CONTACT_DATE",
 				"type": "String"
 			},
 			{
+				"name": "T_GENDER",
 				"type": "String"
 			},
 			{
+				"name": "T_PROVINCE",
 				"type": "String"
 			},
 			{
+				"name": "T_COMPANY_BOOK",
 				"type": "String"
 			},
 			{
+				"name": "T_LEGAL_DOC_NAME",
 				"type": "String"
 			},
 			{
+				"name": "T_LEGAL_ID",
 				"type": "String"
 			},
 			{
+				"name": "T_LEGAL_ISS_AUTH",
 				"type": "String"
 			},
 			{
+				"name": "T_LEGAL_ISS_DATE",
 				"type": "String"
 			},
 			{
+				"name": "T_LEGAL_HOLDER_NAME",
 				"type": "String"
 			},
 			{
+				"name": "T_PHONE_1",
 				"type": "String"
 			},
 			{
+				"name": "T_SMS_1",
 				"type": "String"
 			},
 			{
+				"name": "T_OFF_PHONE",
 				"type": "String"
 			},
 			{
+				"name": "T_FAX_1",
 				"type": "String"
 			},
 			{
+				"name": "T_EMAIL_1",
 				"type": "String"
 			},
 			{
+				"name": "T_TAX_ID",
 				"type": "String"
 			},
 			{
+				"name": "T_LEGACY_REF",
 				"type": "String"
 			},
 			{
+				"name": "T_CHARTER_CAPITAL",
 				"type": "String"
 			},
 			{
+				"name": "T_LABOUR_NUMBER",
 				"type": "String"
 			},
 			{
+				"name": "T_MARITAL_STATUS",
 				"type": "String"
 			},
 			{
+				"name": "T_OCCUPATION",
 				"type": "String"
 			},
 			{
+				"name": "T_GIVEN_NAMES",
 				"type": "String"
 			},
 			{
+				"name": "T_FAMILY_NAME",
 				"type": "String"
 			},
 			{
+				"name": "T_LEGAL_EXP_DATE",
 				"type": "String"
 			},
 			{
+				"name": "T_RELATION_CODE",
 				"type": "String"
 			},
 			{
+				"name": "T_REL_CUSTOMER",
 				"type": "String"
 			},
 			{
+				"name": "T_JOB_TITLE",
 				"type": "String"
 			},
 			{
+				"name": "T_POSTING_RESTRICT",
 				"type": "String"
 			},
 			{
+				"name": "T_TEXT",
 				"type": "String"
 			},
 			{
+				"name": "T_SUB_INDUSTRY",
 				"type": "String"
 			},
 			{
+				"name": "T_ASSET_CLASS",
 				"type": "String"
 			},
 			{
+				"name": "T_STREET",
 				"type": "String"
 			},
 			{
+				"name": "T_EDUCATION_LEVEL",
 				"type": "String"
 			},
 			{
+				"name": "T_BLACK_LISTED",
 				"type": "String"
 			},
 			{
+				"name": "T_CLASSIFICATION",
 				"type": "String"
 			},
 			{
+				"name": "T_TOTAL_INCOME",
 				"type": "String"
 			},
 			{
+				"name": "T_INPUTTER",
 				"type": "String"
 			},
 			{
+				"name": "T_AUTHORISER",
 				"type": "String"
 			},
 			{
+				"name": "T_TOTAL_PROPERTY",
 				"type": "String"
 			},
 			{
+				"name": "T_CUST_GROUP",
 				"type": "String"
 			},
 			{
+				"name": "T_AC_MIDDLEMAN",
 				"type": "String"
 			},
 			{
+				"name": "T_CA_MAN",
 				"type": "String"
 			},
 			{
+				"name": "T_CREATE_DATE",
 				"type": "String"
 			},
 			{
+				"name": "T_CUSTOMER_ACT",
 				"type": "String"
 			},
 			{
+				"name": "T_WARD_1",
 				"type": "String"
 			},
 			{
+				"name": "T_PROVINCE_1",
 				"type": "String"
 			},
 			{
+				"name": "T_NET_MONTHLY_IN",
 				"type": "String"
 			},
 			{
+				"name": "T_CURR_COMPANY",
 				"type": "String"
 			},
 			{
+				"name": "T_TITLE",
 				"type": "String"
 			},
 			{
+				"name": "T_ADD_NUM",
 				"type": "String"
 			},
 			{
+				"name": "T_WARD_2",
 				"type": "String"
 			},
 			{
+				"name": "T_PROVINCE_2",
 				"type": "String"
 			},
 			{
+				"name": "T_TOWN_COUNTRY_2",
 				"type": "String"
 			},
 			{
+				"name": "T_COMPANY_NAME",
 				"type": "String"
 			},
 			{
+				"name": "T_BUSSINESS_ADDR",
 				"type": "String"
 			},
 			{
+				"name": "T_INCOME_SOURCE",
 				"type": "String"
 			},
 			{
+				"name": "T_INCOME_BY",
 				"type": "String"
 			},
 			{
+				"name": "T_LANGUAGE",
 				"type": "String"
 			},
 			{
+				"name": "T_SMS_2",
 				"type": "String"
 			},
 			{
+				"name": "T_PHONE_2",
 				"type": "String"
 			},
 			{
+				"name": "T_OFF_PHONE_2",
 				"type": "String"
 			},
 			{
+				"name": "T_EMAIL_2",
 				"type": "String"
 			},
 			{
+				"name": "T_REPRESENTATIVE",
 				"type": "String"
 			},
 			{
+				"name": "T_REPRESENT_JOB",
 				"type": "String"
 			},
 			{
+				"name": "T_CONTACT_PERSON",
 				"type": "String"
 			},
 			{
+				"name": "T_CONTACT_TITLE",
 				"type": "String"
 			},
 			{
+				"name": "T_SALE_INCOME",
 				"type": "String"
 			},
 			{
+				"name": "T_PROFIT_BF_TAX",
 				"type": "String"
 			},
 			{
+				"name": "T_IMP_EXP_BUSINES",
 				"type": "String"
 			},
 			{
+				"name": "T_INTRODUCER",
 				"type": "String"
 			},
 			{
+				"name": "T_SENIORITY",
 				"type": "String"
 			},
 			{
+				"name": "T_CU_PROFESSION",
 				"type": "String"
 			},
 			{
+				"name": "T_CUS_TYPE",
 				"type": "String"
 			},
 			{
+				"name": "T_CIFCONTACTDATE",
 				"type": "String"
 			},
 			{
+				"name": "T_STATUS_CONTACT",
 				"type": "String"
 			},
 			{
+				"name": "T_PLAN_REVENUE",
 				"type": "String"
 			},
 			{
+				"name": "T_COMMIT_REVENUE",
 				"type": "String"
 			},
 			{
+				"name": "T_COMMIT_DATE",
 				"type": "String"
 			},
 			{
+				"name": "T_DATE_TIME",
 				"type": "String"
 			},
 			{
+				"name": "IP_ID",
 				"type": "String"
 			},
 			{
+				"name": "T_LEGAL_ID_DEPUTY",
 				"type": "String"
 			},
 			{
+				"name": "T_SP_RATING",
 				"type": "String"
 			},
 			{
+				"name": "T_FITCH_RATING",
 				"type": "String"
 			},
 			{
+				"name": "T_MOODY_RATING",
 				"type": "String"
 			},
 			{
+				"name": "T_OT_RATING_NAME",
 				"type": "String"
 			},
 			{
+				"name": "T_OTHER_RATING",
 				"type": "String"
 			},
 			{
+				"name": "T_SP_RATING_DATE",
 				"type": "String"
 			},
 			{
+				"name": "T_FITCH_RTG_DATE",
 				"type": "String"
 			},
 			{
+				"name": "T_MOODY_RTG_DATE",
 				"type": "String"
 			},
 			{
+				"name": "T_SP_RTG_FORM",
 				"type": "String"
 			},
 			{
+				"name": "T_FITCH_RTG_FORM",
 				"type": "String"
 			},
 			{
+				"name": "T_MOODY_RTG_FORM",
 				"type": "String"
 			},
 			{
+				"name": "T_OTHER_RTG_FORM",
 				"type": "String"
 			},
 			{
+				"name": "T_PARTNER_TYPE",
 				"type": "String"
 			},
 			{
+				"name": "T_OTHER_RTG_DATE",
 				"type": "String"
 			},
 			{
+				"name": "T_LEGAL_DEPUTY_TP",
 				"type": "String"
 			},
 			{
+				"name": "T_REPRESENT_DOB",
 				"type": "String"
 			},
 			{
+				"name": "T_PARENT_COM_NAME",
 				"type": "String"
 			},
 			{
+				"name": "T_OCB_REP_NATION",
 				"type": "String"
 			},
 			{
+				"name": "T_OCB_REP_PHONE",
 				"type": "String"
 			},
 			{
+				"name": "T_OCB_REP_SMS",
 				"type": "String"
 			},
 			{
+				"name": "T_OCB_REP_EMAIL",
 				"type": "String"
 			},
 			{
+				"name": "T_OCB_CT_LEGALDOC",
 				"type": "String"
 			},
 			{
+				"name": "T_OCB_CT_LEGAL_ID",
 				"type": "String"
 			},
 			{
+				"name": "T_VISA_ISS_DATE",
 				"type": "String"
 			},
 			{
+				"name": "T_VISA_EXP_DATE",
 				"type": "String"
 			},
 			{
+				"name": "T_OCB_VISA_VLDATE",
 				"type": "String"
 			},
 			{
+				"name": "T_OCB_KYC_STATUS",
 				"type": "String"
 			}
 		]
