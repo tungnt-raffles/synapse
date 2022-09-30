@@ -1,0 +1,17 @@
+{
+	"name": "Huy",
+	"properties": {
+		"content": {
+			"query": "--test",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "raffles_synapse",
+				"poolName": "raffles_synapse"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
