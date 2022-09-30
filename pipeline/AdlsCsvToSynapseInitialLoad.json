@@ -58,7 +58,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "RafflesCsvCustomer",
+						"referenceName": "RafflesCsvCardClient",
 						"type": "DatasetReference"
 					}
 				],
