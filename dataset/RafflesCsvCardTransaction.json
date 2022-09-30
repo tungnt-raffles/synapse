@@ -1,0 +1,496 @@
+{
+	"name": "RafflesCsvCardTransaction",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "raffles-synapse-WorkspaceDefaultStorage",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Specific"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "W4_OWS_DOC__20220831.csv",
+				"folderPath": "card_transactions/2022/08/31",
+				"fileSystem": "landing"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "DATA_DATE",
+				"type": "String"
+			},
+			{
+				"name": "AMND_DATE",
+				"type": "String"
+			},
+			{
+				"name": "AMND_STATE",
+				"type": "String"
+			},
+			{
+				"name": "AMND_OFFICER",
+				"type": "String"
+			},
+			{
+				"name": "AMND_PREV",
+				"type": "String"
+			},
+			{
+				"name": "ID",
+				"type": "String"
+			},
+			{
+				"name": "PCAT",
+				"type": "String"
+			},
+			{
+				"name": "CON_CAT",
+				"type": "String"
+			},
+			{
+				"name": "TERMINAL_CATEGORY",
+				"type": "String"
+			},
+			{
+				"name": "CCAT",
+				"type": "String"
+			},
+			{
+				"name": "F_I",
+				"type": "String"
+			},
+			{
+				"name": "BRANCH",
+				"type": "String"
+			},
+			{
+				"name": "SERVICE_GROUP",
+				"type": "String"
+			},
+			{
+				"name": "CONTRACT_NUMBER",
+				"type": "String"
+			},
+			{
+				"name": "BASE_RELATION",
+				"type": "String"
+			},
+			{
+				"name": "CONTRACT_NAME",
+				"type": "String"
+			},
+			{
+				"name": "COMMENT_TEXT",
+				"type": "String"
+			},
+			{
+				"name": "RELATION_TAG",
+				"type": "String"
+			},
+			{
+				"name": "ACNT_CONTRACT__ID",
+				"type": "String"
+			},
+			{
+				"name": "CONTR_TYPE",
+				"type": "String"
+			},
+			{
+				"name": "CONTR_SUBTYPE__ID",
+				"type": "String"
+			},
+			{
+				"name": "SERV_PACK__ID",
+				"type": "String"
+			},
+			{
+				"name": "ACC_SCHEME__ID",
+				"type": "String"
+			},
+			{
+				"name": "OLD_PACK",
+				"type": "String"
+			},
+			{
+				"name": "CHANNEL",
+				"type": "String"
+			},
+			{
+				"name": "OLD_SCHEME",
+				"type": "String"
+			},
+			{
+				"name": "PRODUCT",
+				"type": "String"
+			},
+			{
+				"name": "PARENT_PRODUCT",
+				"type": "String"
+			},
+			{
+				"name": "PRODUCT_PREV",
+				"type": "String"
+			},
+			{
+				"name": "MAIN_PRODUCT",
+				"type": "String"
+			},
+			{
+				"name": "LIAB_CATEGORY",
+				"type": "String"
+			},
+			{
+				"name": "CLIENT__ID",
+				"type": "String"
+			},
+			{
+				"name": "CLIENT_TYPE",
+				"type": "String"
+			},
+			{
+				"name": "ACNT_CONTRACT__OID",
+				"type": "String"
+			},
+			{
+				"name": "LIAB_CONTRACT",
+				"type": "String"
+			},
+			{
+				"name": "LIAB_CONTRACT_PREV",
+				"type": "String"
+			},
+			{
+				"name": "BILLING_CONTRACT",
+				"type": "String"
+			},
+			{
+				"name": "BEHAVIOR_GROUP",
+				"type": "String"
+			},
+			{
+				"name": "BEHAVIOR_TYPE",
+				"type": "String"
+			},
+			{
+				"name": "BEHAVIOR_TYPE_PREV",
+				"type": "String"
+			},
+			{
+				"name": "CHECK_AVAILABLE",
+				"type": "String"
+			},
+			{
+				"name": "CHECK_USAGE",
+				"type": "String"
+			},
+			{
+				"name": "CURR",
+				"type": "String"
+			},
+			{
+				"name": "OLD_CURR",
+				"type": "String"
+			},
+			{
+				"name": "AUTH_LIMIT_AMOUNT",
+				"type": "String"
+			},
+			{
+				"name": "BASE_AUTH_LIMIT",
+				"type": "String"
+			},
+			{
+				"name": "LIAB_BALANCE",
+				"type": "String"
+			},
+			{
+				"name": "LIAB_BLOCKED",
+				"type": "String"
+			},
+			{
+				"name": "OWN_BALANCE",
+				"type": "String"
+			},
+			{
+				"name": "OWN_BLOCKED",
+				"type": "String"
+			},
+			{
+				"name": "SUB_BALANCE",
+				"type": "String"
+			},
+			{
+				"name": "SUB_BLOCKED",
+				"type": "String"
+			},
+			{
+				"name": "TOTAL_BLOCKED",
+				"type": "String"
+			},
+			{
+				"name": "TOTAL_BALANCE",
+				"type": "String"
+			},
+			{
+				"name": "SHARED_BALANCE",
+				"type": "String"
+			},
+			{
+				"name": "SHARED_BLOCKED",
+				"type": "String"
+			},
+			{
+				"name": "AMOUNT_AVAILABLE",
+				"type": "String"
+			},
+			{
+				"name": "DATE_OPEN",
+				"type": "String"
+			},
+			{
+				"name": "DATE_EXPIRE",
+				"type": "String"
+			},
+			{
+				"name": "LAST_BILLING_DATE",
+				"type": "String"
+			},
+			{
+				"name": "NEXT_BILLING_DATE",
+				"type": "String"
+			},
+			{
+				"name": "LAST_SCAN",
+				"type": "String"
+			},
+			{
+				"name": "CARD_EXPIRE",
+				"type": "String"
+			},
+			{
+				"name": "PRODUCTION_STATUS",
+				"type": "String"
+			},
+			{
+				"name": "RBS_MEMBER_ID",
+				"type": "String"
+			},
+			{
+				"name": "RBS_NUMBER",
+				"type": "String"
+			},
+			{
+				"name": "REPORT_TYPE",
+				"type": "String"
+			},
+			{
+				"name": "MAX_PIN_ATTEMPTS",
+				"type": "String"
+			},
+			{
+				"name": "PIN_ATTEMPTS",
+				"type": "String"
+			},
+			{
+				"name": "RISK_SCHEME",
+				"type": "String"
+			},
+			{
+				"name": "CHIP_SCHEME",
+				"type": "String"
+			},
+			{
+				"name": "RISK_FACTOR",
+				"type": "String"
+			},
+			{
+				"name": "RISK_FACTOR_PREV",
+				"type": "String"
+			},
+			{
+				"name": "CONTR_STATUS",
+				"type": "String"
+			},
+			{
+				"name": "MERCHANT_ID",
+				"type": "String"
+			},
+			{
+				"name": "TR_TITLE",
+				"type": "String"
+			},
+			{
+				"name": "TR_COMPANY",
+				"type": "String"
+			},
+			{
+				"name": "TR_COUNTRY",
+				"type": "String"
+			},
+			{
+				"name": "TR_FIRST_NAM",
+				"type": "String"
+			},
+			{
+				"name": "TR_LAST_NAM",
+				"type": "String"
+			},
+			{
+				"name": "TR_SIC",
+				"type": "String"
+			},
+			{
+				"name": "ADD_INFO_01",
+				"type": "String"
+			},
+			{
+				"name": "ADD_INFO_02",
+				"type": "String"
+			},
+			{
+				"name": "ADD_INFO_03",
+				"type": "String"
+			},
+			{
+				"name": "ADD_INFO_04",
+				"type": "String"
+			},
+			{
+				"name": "CONTRACT_LEVEL",
+				"type": "String"
+			},
+			{
+				"name": "EXT_DATA",
+				"type": "String"
+			},
+			{
+				"name": "REPORT_ADDRESS",
+				"type": "String"
+			},
+			{
+				"name": "SHARE_BALANCE",
+				"type": "String"
+			},
+			{
+				"name": "IS_MULTYCURRENCY",
+				"type": "String"
+			},
+			{
+				"name": "ENABLES_ITEM",
+				"type": "String"
+			},
+			{
+				"name": "CYCLE_LENGTH",
+				"type": "String"
+			},
+			{
+				"name": "INTERVAL_TYPE",
+				"type": "String"
+			},
+			{
+				"name": "STATUS_CATEGORY",
+				"type": "String"
+			},
+			{
+				"name": "LIMIT_IS_ACTIVE",
+				"type": "String"
+			},
+			{
+				"name": "ROUTING_IDT",
+				"type": "String"
+			},
+			{
+				"name": "IS_READY",
+				"type": "String"
+			},
+			{
+				"name": "SETTLEMENT_TYPE",
+				"type": "String"
+			},
+			{
+				"name": "AUTH_SEQ_N",
+				"type": "String"
+			},
+			{
+				"name": "APPLY_DT",
+				"type": "String"
+			},
+			{
+				"name": "LOCAL_VERSION",
+				"type": "String"
+			},
+			{
+				"name": "REMOTE_VERSION",
+				"type": "String"
+			},
+			{
+				"name": "PRE_APPRV_CARD_FLAG",
+				"type": "String"
+			},
+			{
+				"name": "CARD_CLASSIFIER_CODE",
+				"type": "String"
+			},
+			{
+				"name": "CARD_CLASSIFIER_NAME",
+				"type": "String"
+			},
+			{
+				"name": "POLICY_CLASSIFIER_CODE",
+				"type": "String"
+			},
+			{
+				"name": "POLICY_CLASSIFIER_NAME",
+				"type": "String"
+			},
+			{
+				"name": "ORGANIZATION_LINKED_CODE",
+				"type": "String"
+			},
+			{
+				"name": "ORGANIZATION_LINKED_NAME",
+				"type": "String"
+			},
+			{
+				"name": "PROVISION_INDICATOR_CODE",
+				"type": "String"
+			},
+			{
+				"name": "PRODUCT_TYPE_CODE",
+				"type": "String"
+			},
+			{
+				"name": "CARD_PIN_DELIVERY_STATUS_CODE",
+				"type": "String"
+			},
+			{
+				"name": "DEBT_LEVEL_CODE",
+				"type": "String"
+			},
+			{
+				"name": "DEBT_LEVEL_BY_LATE_DATE_CODE",
+				"type": "String"
+			},
+			{
+				"name": "FOLLOW_DEBT_LEVEL_CODE",
+				"type": "String"
+			},
+			{
+				"name": "BOVD_CAT_CODE",
+				"type": "String"
+			},
+			{
+				"name": "INTEREST_RATE",
+				"type": "String"
+			}
+		]
+	}
+}

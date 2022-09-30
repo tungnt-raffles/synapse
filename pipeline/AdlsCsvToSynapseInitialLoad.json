@@ -58,7 +58,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "RafflesCsvCardClient",
+						"referenceName": "RafflesCsvCardTransaction",
 						"type": "DatasetReference"
 					}
 				],
@@ -87,7 +87,7 @@
 			},
 			"target_table": {
 				"type": "string",
-				"defaultValue": "Card"
+				"defaultValue": "CardTransaction"
 			}
 		},
 		"folder": {
