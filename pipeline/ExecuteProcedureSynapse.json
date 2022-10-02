@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "ExecuteProcedureSynapse",
+				"name": "ExecuteProcedureSynapse_H_CUSTOMER",
 				"type": "SqlPoolStoredProcedure",
 				"dependsOn": [],
 				"policy": {
