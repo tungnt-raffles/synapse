@@ -19,17 +19,21 @@
 					"type": "SqlPoolReference"
 				},
 				"typeProperties": {
-					"storedProcedureName": {
-						"value": "@pipeline().parameters.procedure_name",
-						"type": "Expression"
+					"storedProcedureName": "[StandardizedBank].[ProcedureCustomer]",
+					"storedProcedureParameters": {
+						"ETL_DATE": {
+							"value": "20220831",
+							"type": "Int32"
+						}
 					}
 				}
 			}
 		],
+		"concurrency": 1,
 		"parameters": {
 			"procedure_name": {
 				"type": "string",
-				"defaultValue": "Curated.ProcedureSales"
+				"defaultValue": "ProceduceStandadizedCustomer_Hub"
 			}
 		},
 		"folder": {
