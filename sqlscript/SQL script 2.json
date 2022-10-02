@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 2",
+	"properties": {
+		"content": {
+			"query": "SET NOCOUNT ON;\n \nDECLARE @BinaryValue VARBINARY(256) \n \nSET @BinaryValue = hashbytes('md5', 'Robin')\n\ninsert into dbo.zz_longnq_test_hashed_key \nSELECT  CONVERT([char](32), @BinaryValue, 1) hashed_key1;\n\ninsert into dbo.zz_longnq_test_hashed_key \nSELECT  CONVERT([char](32), @BinaryValue, 2) hashed_key2;\n \nSET NOCOUNT OFF;\n\n\ncreate table zz_longnq_test_hashed_key (hashkey_id char(32))\n\nselect * from zz_longnq_test_hashed_key\n\n\nALTER FUNCTION Standardized.FunctionHashMD5 (@input VARCHAR(50))\nRETURNS CHAR(32)\nAS\nBEGIN\n    return CONVERT(char(32), hashbytes('MD5', @input), 2)\nEND\nGO\n\n\nSELECT Standardized.FunctionHashMD5('Long');\n\nselect hashbytes('MD5', 'Long');\n\nselect CONVERT([char](32), hashbytes('MD5', 'Robin'), 2);\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "raffles_synapse",
+				"poolName": "raffles_synapse"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

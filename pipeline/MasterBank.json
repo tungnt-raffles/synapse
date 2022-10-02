@@ -33,6 +33,26 @@
 								},
 								"waitOnCompletion": true
 							}
+						},
+						{
+							"name": "ExecuteProcedureStandardizedZone_Link",
+							"type": "ExecutePipeline",
+							"dependsOn": [
+								{
+									"activity": "ExecuteProcedureStandardizedZone_HUB",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "Pipeline 1",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true
+							}
 						}
 					]
 				}

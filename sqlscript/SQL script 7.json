@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 7",
+	"properties": {
+		"content": {
+			"query": "SELECT top 100 \n         Standardized.FunctionHashMD5('CUSTOMER_CARD' + '-' + a.ID + '-' + a.contract_number) AS [Customer_X_Card Hashkey]\n        ,Standardized.FunctionHashMD5('CUSTOMER' + '-' + b.client_number) AS [Customer HashKey]\n        ,Standardized.FunctionHashMD5('CARD' + '-' + a.id + '-' + a.contract_number) AS [Card HashKey]\n        ,'LandingBank.Card' AS [Record Source]\n        ,CONVERT(date, GETDATE() ,103) AS [Load Date] \nFROM [LandingBank].[Card]  a \n    inner join [LandingBank].[CardClient] b ON b.data_date=20220831 and a.client__id=b.id\n    inner join Standardized.H_CUSTOMER c on c.[Customer Number] = b.client_number  --ep dieu kien chi lay nhung card co Client_number day vao StandardizedZone\n    where a.amnd_state='A' and a.con_cat='C' and a.base_relation is null and a.data_date=20220831",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "raffles_synapse",
+				"poolName": "raffles_synapse"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
