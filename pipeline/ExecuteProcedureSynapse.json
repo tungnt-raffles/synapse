@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "ExecuteProcedureSynapse_H_CUSTOMER",
+				"name": "H_CUSTOMER",
 				"type": "SqlPoolStoredProcedure",
 				"dependsOn": [],
 				"policy": {
@@ -23,6 +23,56 @@
 					"storedProcedureParameters": {
 						"ETL_DATE": {
 							"value": "20220831",
+							"type": "Int32"
+						}
+					}
+				}
+			},
+			{
+				"name": "H_CARD",
+				"type": "SqlPoolStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"sqlPool": {
+					"referenceName": "raffles_synapse",
+					"type": "SqlPoolReference"
+				},
+				"typeProperties": {
+					"storedProcedureName": "[StandardizedBank].[ProcedureCard]",
+					"storedProcedureParameters": {
+						"ETL_DATE": {
+							"type": "Int32"
+						}
+					}
+				}
+			},
+			{
+				"name": "H_ACCOUNT",
+				"type": "SqlPoolStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"sqlPool": {
+					"referenceName": "raffles_synapse",
+					"type": "SqlPoolReference"
+				},
+				"typeProperties": {
+					"storedProcedureName": "[StandardizedBank].[ProcedureAccount]",
+					"storedProcedureParameters": {
+						"ETL_DATE": {
 							"type": "Int32"
 						}
 					}
