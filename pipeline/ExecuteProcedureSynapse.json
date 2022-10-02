@@ -22,7 +22,10 @@
 					"storedProcedureName": "[StandardizedBank].[ProcedureCustomer]",
 					"storedProcedureParameters": {
 						"ETL_DATE": {
-							"value": "20220831",
+							"value": {
+								"value": "@pipeline().parameters.ETL_DATE",
+								"type": "Expression"
+							},
 							"type": "Int32"
 						}
 					}
@@ -48,6 +51,10 @@
 					"storedProcedureName": "[StandardizedBank].[ProcedureCard]",
 					"storedProcedureParameters": {
 						"ETL_DATE": {
+							"value": {
+								"value": "@pipeline().parameters.ETL_DATE",
+								"type": "Expression"
+							},
 							"type": "Int32"
 						}
 					}
@@ -73,6 +80,10 @@
 					"storedProcedureName": "[StandardizedBank].[ProcedureAccount]",
 					"storedProcedureParameters": {
 						"ETL_DATE": {
+							"value": {
+								"value": "@pipeline().parameters.ETL_DATE",
+								"type": "Expression"
+							},
 							"type": "Int32"
 						}
 					}
@@ -98,6 +109,10 @@
 					"storedProcedureName": "[StandardizedBank].[ProcedureTransaction]",
 					"storedProcedureParameters": {
 						"ETL_DATE": {
+							"value": {
+								"value": "@pipeline().parameters.ETL_DATE",
+								"type": "Expression"
+							},
 							"type": "Int32"
 						}
 					}
@@ -108,7 +123,11 @@
 		"parameters": {
 			"procedure_name": {
 				"type": "string",
-				"defaultValue": "ProceduceStandadizedCustomer_Hub"
+				"defaultValue": "ProceduceStandadized_Hub"
+			},
+			"ETL_DATE": {
+				"type": "int",
+				"defaultValue": 20220831
 			}
 		},
 		"folder": {
