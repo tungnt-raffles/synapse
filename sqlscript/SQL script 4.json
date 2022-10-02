@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 4",
+	"properties": {
+		"content": {
+			"query": "DROP PROCEDURE [StandardizedBank].[ProcedureCustomer]\nGO\n\nSET ANSI_NULLS ON\nGO\nSET QUOTED_IDENTIFIER ON\nGO\n\nCREATE PROC [StandardizedBank].[ProcedureCustomer] (@ETL_DATE INT)\nAS\nBEGIN\n\nTRUNCATE TABLE [Standardized].[H_CUSTOMER];\n\nINSERT INTO [Standardized].[H_CUSTOMER] (\n[Customer HashKey]\n,[Customer Number]\n,[Record Source]\n,[Load Date]\n)\nSELECT Standardized.FunctionHashMD5('CUSTOMER' + '-' + ID) AS [Customer HashKey]\n,ID AS [Customer Number]\n,'LandingBank.Customer' AS [Record Source]\n,CONVERT(VARCHAR, GETDATE() ,103) AS [Load Date] FROM [LandingBank].[Customer]\nWHERE DATA_DATE= @ETL_DATE;\nEND\n\n-------\nGO\n\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "raffles_synapse",
+				"poolName": "raffles_synapse"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
