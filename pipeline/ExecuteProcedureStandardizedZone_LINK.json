@@ -1,5 +1,5 @@
 {
-	"name": "Pipeline 1",
+	"name": "ExecuteProcedureStandardizedZone_LINK",
 	"properties": {
 		"activities": [
 			{
@@ -22,12 +22,22 @@
 					"storedProcedureName": "[StandardizedBank].[ProcedureLinkCustomerCard]",
 					"storedProcedureParameters": {
 						"ETL_DATE": {
+							"value": {
+								"value": "@pipeline().parameters.ETL_DATE",
+								"type": "Expression"
+							},
 							"type": "Int32"
 						}
 					}
 				}
 			}
 		],
+		"parameters": {
+			"ETL_DATE": {
+				"type": "int",
+				"defaultValue": 20220831
+			}
+		},
 		"annotations": []
 	}
 }
