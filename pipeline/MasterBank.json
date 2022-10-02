@@ -22,7 +22,7 @@
 					"isSequential": false,
 					"activities": [
 						{
-							"name": "ExecuteProcedureStandardizedZone",
+							"name": "ExecuteProcedureStandardizedZone_HUB",
 							"type": "ExecutePipeline",
 							"dependsOn": [],
 							"userProperties": [],
@@ -31,13 +31,7 @@
 									"referenceName": "ExecuteProcedureSynapse",
 									"type": "PipelineReference"
 								},
-								"waitOnCompletion": true,
-								"parameters": {
-									"procedure_name": {
-										"value": "@item()",
-										"type": "Expression"
-									}
-								}
+								"waitOnCompletion": true
 							}
 						}
 					]
