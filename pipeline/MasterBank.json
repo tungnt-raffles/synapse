@@ -22,7 +22,7 @@
 					"isSequential": false,
 					"activities": [
 						{
-							"name": "ExecuteProcedureStandardizedZone_HUB",
+							"name": "ExecuteProcedureStandardizedZone",
 							"type": "ExecutePipeline",
 							"dependsOn": [],
 							"userProperties": [],
@@ -31,27 +31,13 @@
 									"referenceName": "ExecuteProcedureSynapse",
 									"type": "PipelineReference"
 								},
-								"waitOnCompletion": true
-							}
-						},
-						{
-							"name": "ExecuteProcedureStandardizedZone_Link",
-							"type": "ExecutePipeline",
-							"dependsOn": [
-								{
-									"activity": "ExecuteProcedureStandardizedZone_HUB",
-									"dependencyConditions": [
-										"Succeeded"
-									]
+								"waitOnCompletion": true,
+								"parameters": {
+									"procedure_name": {
+										"value": "@item()",
+										"type": "Expression"
+									}
 								}
-							],
-							"userProperties": [],
-							"typeProperties": {
-								"pipeline": {
-									"referenceName": "Pipeline 1",
-									"type": "PipelineReference"
-								},
-								"waitOnCompletion": true
 							}
 						}
 					]
