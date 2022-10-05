@@ -2,7 +2,7 @@
 	"name": "SQL script 8",
 	"properties": {
 		"content": {
-			"query": "select count(1) from [Standardized].[H_TRANSACTION];",
+			"query": "SELECT max(data_date) FROM [LandingBank].[Card];\nEXEC [StandardizedBank].[ProcedureCustomer] '20220831';\nselect count(1) from [Curated].[DIM_INDIVIDUAL_CUSTOMER];\n",
 			"metadata": {
 				"language": "sql"
 			},

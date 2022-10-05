@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 11",
+	"properties": {
+		"content": {
+			"query": "SET ANSI_NULLS ON\nGO\nSET QUOTED_IDENTIFIER ON\nGO\n\nCREATE PROC [StandardizedBank].[ProcedureTransaction] @ETL_DATE [INT] AS\nBEGIN\n\nTRUNCATE TABLE [Standardized].[H_TRANSACTION];\n\nINSERT INTO [Standardized].[H_TRANSACTION] \n([Transaction HashKey]\n,[Transaction Number]\n,[Record Source]\n,[Load Date])\nSELECT \nStandardized.FunctionHashMD5('TRANSACTION' + '-' + ID ) AS [Transaction HashKey]\n,ID AS [Transaction Number]\n,'LandingBank.Card' AS [Record Source]\n,CONVERT(VARCHAR, GETDATE() ,103) AS [Load Date]\nFROM [LandingBank].[CardTransaction] \nWHERE AMND_STATE='A' AND DATA_DATE=@ETL_DATE\n;\n\nEND\n\n\n-------\nGO",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "raffles_synapse",
+				"poolName": "raffles_synapse"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
