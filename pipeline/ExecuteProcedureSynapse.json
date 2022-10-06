@@ -131,7 +131,7 @@
 			}
 		},
 		"folder": {
-			"name": "GenericPipeline"
+			"name": "SpecificPipeline"
 		},
 		"annotations": [],
 		"lastPublishTime": "2022-09-29T10:49:44Z"

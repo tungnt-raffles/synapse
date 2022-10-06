@@ -1392,7 +1392,7 @@
 			}
 		},
 		"folder": {
-			"name": "GenericPipeline"
+			"name": "SpecificPipeline"
 		},
 		"annotations": []
 	}
