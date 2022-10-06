@@ -23,6 +23,157 @@
 					"storedProcedureName": "[dbo].[L_ACCOUNT_BRANCH_ETL]",
 					"storedProcedureParameters": {
 						"data_date": {
+							"value": "",
+							"type": "Int32"
+						}
+					}
+				}
+			},
+			{
+				"name": "L_ACCOUNT_CARD_ETL",
+				"type": "SqlPoolStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"sqlPool": {
+					"referenceName": "raffles_synapse",
+					"type": "SqlPoolReference"
+				},
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[L_ACCOUNT_CARD_ETL]",
+					"storedProcedureParameters": {
+						"data_date": {
+							"type": "Int32"
+						}
+					}
+				}
+			},
+			{
+				"name": "L_CARD_BRANCH_ETL",
+				"type": "SqlPoolStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"sqlPool": {
+					"referenceName": "raffles_synapse",
+					"type": "SqlPoolReference"
+				},
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[L_CARD_BRANCH_ETL]",
+					"storedProcedureParameters": {
+						"data_date": {
+							"type": "Int32"
+						}
+					}
+				}
+			},
+			{
+				"name": "L_CARD_PRODUCT_ETL",
+				"type": "SqlPoolStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"sqlPool": {
+					"referenceName": "raffles_synapse",
+					"type": "SqlPoolReference"
+				},
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[L_CARD_PRODUCT_ETL]",
+					"storedProcedureParameters": {
+						"data_date": {
+							"type": "Int32"
+						}
+					}
+				}
+			},
+			{
+				"name": "L_CARD_TRANSACTION_ETL",
+				"type": "SqlPoolStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"sqlPool": {
+					"referenceName": "raffles_synapse",
+					"type": "SqlPoolReference"
+				},
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[L_CARD_TRANSACTION_ETL]",
+					"storedProcedureParameters": {
+						"data_date": {
+							"type": "Int32"
+						}
+					}
+				}
+			},
+			{
+				"name": "L_CUSTOMER_BRANCH_ETL",
+				"type": "SqlPoolStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"sqlPool": {
+					"referenceName": "raffles_synapse",
+					"type": "SqlPoolReference"
+				},
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[L_CUSTOMER_BRANCH_ETL]",
+					"storedProcedureParameters": {
+						"data_date": {
+							"type": "Int32"
+						}
+					}
+				}
+			},
+			{
+				"name": "L_CUSTOMER_CARD_ETL",
+				"type": "SqlPoolStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"sqlPool": {
+					"referenceName": "raffles_synapse",
+					"type": "SqlPoolReference"
+				},
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[L_CUSTOMER_CARD_ETL]",
+					"storedProcedureParameters": {
+						"data_date": {
 							"type": "Int32"
 						}
 					}
