@@ -180,6 +180,12 @@
 				}
 			}
 		],
+		"parameters": {
+			"ETL_DATE": {
+				"type": "int",
+				"defaultValue": 20220831
+			}
+		},
 		"annotations": []
 	}
 }
