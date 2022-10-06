@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Link_Customer_Card",
+				"name": "raffles_synapse_dbo_L_CUSTOMER_CARD_ETL",
 				"type": "SqlPoolStoredProcedure",
 				"dependsOn": [],
 				"policy": {
@@ -19,9 +19,9 @@
 					"type": "SqlPoolReference"
 				},
 				"typeProperties": {
-					"storedProcedureName": "[StandardizedBank].[ProcedureLinkCustomerCard]",
+					"storedProcedureName": "[dbo].[L_CUSTOMER_CARD_ETL]",
 					"storedProcedureParameters": {
-						"ETL_DATE": {
+						"data_date": {
 							"value": {
 								"value": "@pipeline().parameters.ETL_DATE",
 								"type": "Expression"
