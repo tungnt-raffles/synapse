@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 17",
+	"properties": {
+		"content": {
+			"query": "DROP PROC L_CARD_TRANSACTION_ETL;\nSET ANSI_NULLS ON\nGO\nSET QUOTED_IDENTIFIER ON\nGO\n\nCREATE PROC [dbo].[L_CARD_TRANSACTION_ETL] @data_date [int] AS BEGIN\n    TRUNCATE TABLE Standardized.L_CARD_TRANSACTION;\n    INSERT INTO Standardized.L_CARD_TRANSACTION\n    SELECT \n         Standardized.FunctionHashMD5('CARD_TRANSACTION' + '-' + b.ID + '-' + b.contract_number + '-' + a.ID) AS [Card_X_Transaction Hashkey]\n        ,Standardized.FunctionHashMD5('CARD' + '-' + b.id + '-' + b.contract_number) AS [Card HashKey]\n        ,Standardized.FunctionHashMD5('TRANSACTION' + '-' + a.id) AS [Transaction HashKey]\n        ,'LandingBank.CardTransaction' AS [Record Source]\n        ,CONVERT(date, GETDATE() ,103) AS [Load Date]\n    FROM [LandingBank].[CardTransaction]  a \n    inner join [LandingBank].[Card] b ON b.data_date=@data_date and b.amnd_state='A' and b.con_cat='C' and b.base_relation is null and a.target_contract=b.id\n    where a.data_date=@data_date and a.amnd_state='A';\nEND;\nGO\n\n;\nSELECT top 100\n        Standardized.FunctionHashMD5('CARD' + '-' + b.id + '-' + b.contract_number) AS [Card HashKey]\n        ,'CARD' + '-' + b.id + '-' + b.contract_number\n        , a.id\n    FROM [LandingBank].[CardTransaction]  a \n    inner join [LandingBank].[Card] b ON b.amnd_state='A' and b.con_cat='C' and b.base_relation is null and a.target_contract=b.id\n    where a.amnd_state='A'\n    and b.id=3788067   --970448XXXXXX4450;\n;\n\nselect top 100 id, target_contract, * from [LandingBank].[CardTransaction] where target_contract=3788067\n;\n\nselect id  from [LandingBank].[Card] where id=7973656 and amnd_State='A' and con_cat='C';\n\nselect count(1) from Standardized.h_card;\n\nselect  count(1) FROM [LandingBank].[Card] \nWHERE AMND_STATE='A' AND CON_CAT='C' AND BASE_RELATION IS NULL ",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "raffles_synapse",
+				"poolName": "raffles_synapse"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
