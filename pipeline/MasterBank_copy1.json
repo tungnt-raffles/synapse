@@ -41,7 +41,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"pipeline": {
-									"referenceName": "ExecuteProcedureStandardizedZone_LINK",
+									"referenceName": "ExecProcSZLink",
 									"type": "PipelineReference"
 								},
 								"waitOnCompletion": true
