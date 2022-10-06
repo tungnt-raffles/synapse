@@ -5,14 +5,7 @@
 			{
 				"name": "StandardizedZone",
 				"type": "ForEach",
-				"dependsOn": [
-					{
-						"activity": "LandingZone",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
@@ -83,16 +76,10 @@
 							"userProperties": [],
 							"typeProperties": {
 								"pipeline": {
-									"referenceName": "ExecuteProcedureSynapse",
+									"referenceName": "ExecProcSZLink",
 									"type": "PipelineReference"
 								},
-								"waitOnCompletion": false,
-								"parameters": {
-									"procedure_name": {
-										"value": "@item()",
-										"type": "Expression"
-									}
-								}
+								"waitOnCompletion": true
 							}
 						}
 					]
@@ -181,25 +168,6 @@
 					},
 					"method": "GET"
 				}
-			},
-			{
-				"name": "LandingZone",
-				"type": "ExecutePipeline",
-				"dependsOn": [],
-				"userProperties": [],
-				"typeProperties": {
-					"pipeline": {
-						"referenceName": "LandingBank",
-						"type": "PipelineReference"
-					},
-					"waitOnCompletion": true,
-					"parameters": {
-						"partition": {
-							"value": "@pipeline().parameters.partition",
-							"type": "Expression"
-						}
-					}
-				}
 			}
 		],
 		"parameters": {
@@ -218,7 +186,7 @@
 			},
 			"partition": {
 				"type": "string",
-				"defaultValue": "/2022/08/30"
+				"defaultValue": "/2022/08/31"
 			}
 		},
 		"variables": {
