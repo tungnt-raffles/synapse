@@ -70,13 +70,33 @@
 					"isSequential": false,
 					"activities": [
 						{
-							"name": "ExecuteProcedureCuratedZone",
+							"name": "ExecuteFactProcedureCuratedZone",
+							"type": "ExecutePipeline",
+							"dependsOn": [
+								{
+									"activity": "ExecuteDimProcedureCuratedZone",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "ExecProcCZFact",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true
+							}
+						},
+						{
+							"name": "ExecuteDimProcedureCuratedZone",
 							"type": "ExecutePipeline",
 							"dependsOn": [],
 							"userProperties": [],
 							"typeProperties": {
 								"pipeline": {
-									"referenceName": "ExecProcSZLink",
+									"referenceName": "ExecProcCZDim",
 									"type": "PipelineReference"
 								},
 								"waitOnCompletion": true
