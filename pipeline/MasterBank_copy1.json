@@ -1,0 +1,236 @@
+{
+	"name": "MasterBank_copy1",
+	"properties": {
+		"activities": [
+			{
+				"name": "StandardizedZone",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "LandingZone",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@pipeline().parameters.procedure_standardized_zone",
+						"type": "Expression"
+					},
+					"isSequential": false,
+					"activities": [
+						{
+							"name": "ExecuteProcedureStandardizedZone_HUB",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "ExecuteProcedureSynapse",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true
+							}
+						},
+						{
+							"name": "ExecuteProcedureStandardizedZone_Link",
+							"type": "ExecutePipeline",
+							"dependsOn": [
+								{
+									"activity": "ExecuteProcedureStandardizedZone_HUB",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"waitOnCompletion": true
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "CuratedZone",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "StandardizedZone",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@pipeline().parameters.procedure_curated_zone",
+						"type": "Expression"
+					},
+					"isSequential": false,
+					"activities": [
+						{
+							"name": "ExecuteProcedureCuratedZone",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "ExecuteProcedureSynapse",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": false,
+								"parameters": {
+									"procedure_name": {
+										"value": "@item()",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "RefreshPowerBI",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "CuratedZone",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://reqres.in/api/users/2",
+					"connectVia": {
+						"referenceName": "AutoResolveIntegrationRuntime",
+						"type": "IntegrationRuntimeReference"
+					},
+					"method": "GET"
+				}
+			},
+			{
+				"name": "Success",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "RefreshPowerBI",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://reqres.in/api/users/2",
+					"connectVia": {
+						"referenceName": "AutoResolveIntegrationRuntime",
+						"type": "IntegrationRuntimeReference"
+					},
+					"method": "GET"
+				}
+			},
+			{
+				"name": "Fail",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "RefreshPowerBI",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://reqres.in/api/users/2",
+					"connectVia": {
+						"referenceName": "AutoResolveIntegrationRuntime",
+						"type": "IntegrationRuntimeReference"
+					},
+					"method": "GET"
+				}
+			},
+			{
+				"name": "LandingZone",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "LandingBank",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
+						"partition": {
+							"value": "@pipeline().parameters.partition",
+							"type": "Expression"
+						}
+					}
+				}
+			}
+		],
+		"parameters": {
+			"procedure_standardized_zone": {
+				"type": "array",
+				"defaultValue": [
+					"StandardizedBank.ProcedureCard",
+					"StandardizedBank.ProcedureCustomer"
+				]
+			},
+			"procedure_curated_zone": {
+				"type": "array",
+				"defaultValue": [
+					"StandardizedBank.ProcedureCustomer"
+				]
+			},
+			"partition": {
+				"type": "string",
+				"defaultValue": "/2022/08/30"
+			}
+		},
+		"variables": {
+			"table_list": {
+				"type": "Array",
+				"defaultValue": [
+					"Currency",
+					"CreditCard"
+				]
+			}
+		},
+		"folder": {
+			"name": "Bank"
+		},
+		"annotations": [],
+		"lastPublishTime": "2022-09-29T10:59:34Z"
+	},
+	"type": "Microsoft.Synapse/workspaces/pipelines"
+}
