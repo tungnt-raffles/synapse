@@ -5,7 +5,14 @@
 			{
 				"name": "StandardizedZone",
 				"type": "ForEach",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "LandingZone",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
@@ -86,7 +93,13 @@
 									"referenceName": "ExecProcCZFact",
 									"type": "PipelineReference"
 								},
-								"waitOnCompletion": true
+								"waitOnCompletion": true,
+								"parameters": {
+									"ETL_DATE": {
+										"value": "@item()",
+										"type": "Expression"
+									}
+								}
 							}
 						},
 						{
@@ -187,6 +200,25 @@
 						"type": "IntegrationRuntimeReference"
 					},
 					"method": "GET"
+				}
+			},
+			{
+				"name": "LandingZone",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "LandingBank",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
+						"partition": {
+							"value": "@pipeline().parameters.partition",
+							"type": "Expression"
+						}
+					}
 				}
 			}
 		],
