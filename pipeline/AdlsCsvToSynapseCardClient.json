@@ -43,6 +43,7 @@
 					},
 					"sink": {
 						"type": "SqlDWSink",
+						"preCopyScript": "truncate table LandingBank.CardClient",
 						"writeBehavior": "Insert",
 						"sqlWriterUseTableLock": false,
 						"tableOption": "autoCreate",

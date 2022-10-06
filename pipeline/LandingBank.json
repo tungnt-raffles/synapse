@@ -39,6 +39,25 @@
 						}
 					}
 				}
+			},
+			{
+				"name": "LandingCardClient",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "AdlsCsvToSynapseCardClient",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
+						"partition": {
+							"value": "@pipeline().parameters.partition",
+							"type": "Expression"
+						}
+					}
+				}
 			}
 		],
 		"parameters": {
