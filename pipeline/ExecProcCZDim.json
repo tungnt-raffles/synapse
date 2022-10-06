@@ -1,0 +1,75 @@
+{
+	"name": "ExecProcCZDim",
+	"properties": {
+		"description": "Dim procedures\n",
+		"activities": [
+			{
+				"name": "DIM_CARD_ETL",
+				"type": "SqlPoolStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"sqlPool": {
+					"referenceName": "raffles_synapse",
+					"type": "SqlPoolReference"
+				},
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[DIM_CARD_ETL]"
+				}
+			},
+			{
+				"name": "DIM_CARD_ACCOUNT_ETL",
+				"type": "SqlPoolStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"sqlPool": {
+					"referenceName": "raffles_synapse",
+					"type": "SqlPoolReference"
+				},
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[DIM_CARD_ACCOUNT_ETL]"
+				}
+			},
+			{
+				"name": "DIM_INDIVIDUAL_CUSTOMER_ETL",
+				"type": "SqlPoolStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"sqlPool": {
+					"referenceName": "raffles_synapse",
+					"type": "SqlPoolReference"
+				},
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[DIM_INDIVIDUAL_CUSTOMER_ETL]"
+				}
+			}
+		],
+		"parameters": {
+			"ETL_DATE": {
+				"type": "int",
+				"defaultValue": 20220831
+			}
+		},
+		"annotations": []
+	}
+}
