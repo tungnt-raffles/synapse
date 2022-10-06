@@ -33,11 +33,6 @@
 						"storeSettings": {
 							"type": "AzureBlobFSReadSettings",
 							"recursive": true,
-							"wildcardFolderPath": {
-								"value": "card@{pipeline().parameters.partition}",
-								"type": "Expression"
-							},
-							"wildcardFileName": "**",
 							"enablePartitionDiscovery": false
 						},
 						"formatSettings": {
@@ -1374,11 +1369,8 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "RafflesAdlsCsv",
-						"type": "DatasetReference",
-						"parameters": {
-							"file_system": "landing"
-						}
+						"referenceName": "RafflesCsvCard2",
+						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
