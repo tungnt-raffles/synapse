@@ -2,6 +2,43 @@
 	"name": "ExecProcCZFact",
 	"properties": {
 		"description": "Fact Procedures",
+		"activities": [
+			{
+				"name": "FACT_CARD_TRANSACTION_ETL",
+				"type": "SqlPoolStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"sqlPool": {
+					"referenceName": "raffles_synapse",
+					"type": "SqlPoolReference"
+				},
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[FACT_CARD_TRANSACTION_ETL]",
+					"storedProcedureParameters": {
+						"data_date": {
+							"value": {
+								"value": "@pipeline().parameters.ETL_DATE",
+								"type": "Expression"
+							},
+							"type": "String"
+						}
+					}
+				}
+			}
+		],
+		"parameters": {
+			"ETL_DATE": {
+				"type": "int",
+				"defaultValue": 20220831
+			}
+		},
 		"annotations": []
 	}
 }
