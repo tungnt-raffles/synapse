@@ -3,71 +3,9 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "StandardizedZone",
-				"type": "ForEach",
-				"dependsOn": [
-					{
-						"activity": "LandingZone",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"userProperties": [],
-				"typeProperties": {
-					"items": {
-						"value": "@pipeline().parameters.procedure_standardized_zone",
-						"type": "Expression"
-					},
-					"isSequential": false,
-					"activities": [
-						{
-							"name": "ExecuteProcedureStandardizedZone_HUB",
-							"type": "ExecutePipeline",
-							"dependsOn": [],
-							"userProperties": [],
-							"typeProperties": {
-								"pipeline": {
-									"referenceName": "ExecuteProcedureSynapse",
-									"type": "PipelineReference"
-								},
-								"waitOnCompletion": true
-							}
-						},
-						{
-							"name": "ExecuteProcedureStandardizedZone_Link",
-							"type": "ExecutePipeline",
-							"dependsOn": [
-								{
-									"activity": "ExecuteProcedureStandardizedZone_HUB",
-									"dependencyConditions": [
-										"Succeeded"
-									]
-								}
-							],
-							"userProperties": [],
-							"typeProperties": {
-								"pipeline": {
-									"referenceName": "ExecProcSZLink",
-									"type": "PipelineReference"
-								},
-								"waitOnCompletion": true
-							}
-						}
-					]
-				}
-			},
-			{
 				"name": "CuratedZone",
 				"type": "ForEach",
-				"dependsOn": [
-					{
-						"activity": "StandardizedZone",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
@@ -194,25 +132,6 @@
 						"type": "IntegrationRuntimeReference"
 					},
 					"method": "GET"
-				}
-			},
-			{
-				"name": "LandingZone",
-				"type": "ExecutePipeline",
-				"dependsOn": [],
-				"userProperties": [],
-				"typeProperties": {
-					"pipeline": {
-						"referenceName": "LandingBank",
-						"type": "PipelineReference"
-					},
-					"waitOnCompletion": true,
-					"parameters": {
-						"partition": {
-							"value": "@pipeline().parameters.partition",
-							"type": "Expression"
-						}
-					}
 				}
 			}
 		],
