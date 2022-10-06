@@ -23,7 +23,10 @@
 					"storedProcedureName": "[dbo].[L_ACCOUNT_BRANCH_ETL]",
 					"storedProcedureParameters": {
 						"data_date": {
-							"value": "",
+							"value": {
+								"value": "@pipeline().parameters.ETL_DATE",
+								"type": "Expression"
+							},
 							"type": "Int32"
 						}
 					}
@@ -49,6 +52,10 @@
 					"storedProcedureName": "[dbo].[L_ACCOUNT_CARD_ETL]",
 					"storedProcedureParameters": {
 						"data_date": {
+							"value": {
+								"value": "@pipeline().parameters.ETL_DATE",
+								"type": "Expression"
+							},
 							"type": "Int32"
 						}
 					}
@@ -74,6 +81,10 @@
 					"storedProcedureName": "[dbo].[L_CARD_BRANCH_ETL]",
 					"storedProcedureParameters": {
 						"data_date": {
+							"value": {
+								"value": "@pipeline().parameters.ETL_DATE",
+								"type": "Expression"
+							},
 							"type": "Int32"
 						}
 					}
@@ -99,6 +110,10 @@
 					"storedProcedureName": "[dbo].[L_CARD_PRODUCT_ETL]",
 					"storedProcedureParameters": {
 						"data_date": {
+							"value": {
+								"value": "@pipeline().parameters.ETL_DATE",
+								"type": "Expression"
+							},
 							"type": "Int32"
 						}
 					}
@@ -124,6 +139,10 @@
 					"storedProcedureName": "[dbo].[L_CARD_TRANSACTION_ETL]",
 					"storedProcedureParameters": {
 						"data_date": {
+							"value": {
+								"value": "@pipeline().parameters.ETL_DATE",
+								"type": "Expression"
+							},
 							"type": "Int32"
 						}
 					}
@@ -149,6 +168,10 @@
 					"storedProcedureName": "[dbo].[L_CUSTOMER_BRANCH_ETL]",
 					"storedProcedureParameters": {
 						"data_date": {
+							"value": {
+								"value": "@pipeline().parameters.ETL_DATE",
+								"type": "Expression"
+							},
 							"type": "Int32"
 						}
 					}
@@ -174,6 +197,10 @@
 					"storedProcedureName": "[dbo].[L_CUSTOMER_CARD_ETL]",
 					"storedProcedureParameters": {
 						"data_date": {
+							"value": {
+								"value": "@pipeline().parameters.ETL_DATE",
+								"type": "Expression"
+							},
 							"type": "Int32"
 						}
 					}
