@@ -19,7 +19,7 @@
 					"type": "SqlPoolReference"
 				},
 				"typeProperties": {
-					"storedProcedureName": "[StandardizedBank].[ProcedureCustomer]",
+					"storedProcedureName": "[dbo].[H_CUSTOMER_ETL]",
 					"storedProcedureParameters": {
 						"ETL_DATE": {
 							"value": {
