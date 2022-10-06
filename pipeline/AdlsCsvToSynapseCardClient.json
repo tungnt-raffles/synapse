@@ -1,0 +1,873 @@
+{
+	"name": "AdlsCsvToSynapseCardClient",
+	"properties": {
+		"activities": [
+			{
+				"name": "AdlsCsvToSynapse",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"additionalColumns": [
+							{
+								"name": "file_path",
+								"value": "$$FILEPATH"
+							},
+							{
+								"name": "etl_job_date",
+								"value": {
+									"value": "@{formatDateTime(utcnow(), 'yyyyMMdd')}",
+									"type": "Expression"
+								}
+							}
+						],
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"wildcardFolderPath": "card_client/2022/08/31",
+							"wildcardFileName": "**",
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "SqlDWSink",
+						"writeBehavior": "Insert",
+						"sqlWriterUseTableLock": false,
+						"tableOption": "autoCreate",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 1
+								},
+								"sink": {
+									"name": "DATA_DATE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 2
+								},
+								"sink": {
+									"name": "AMND_STATE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 3
+								},
+								"sink": {
+									"name": "AMND_DATE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 4
+								},
+								"sink": {
+									"name": "AMND_OFFICER",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 5
+								},
+								"sink": {
+									"name": "AMND_PREV",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 6
+								},
+								"sink": {
+									"name": "ID",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 7
+								},
+								"sink": {
+									"name": "F_I",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 8
+								},
+								"sink": {
+									"name": "BRANCH",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 9
+								},
+								"sink": {
+									"name": "CCAT",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 10
+								},
+								"sink": {
+									"name": "CLT",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 11
+								},
+								"sink": {
+									"name": "PCAT",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 12
+								},
+								"sink": {
+									"name": "SERVICE_GROUP",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 13
+								},
+								"sink": {
+									"name": "SHORT_NAME",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 14
+								},
+								"sink": {
+									"name": "TITLE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 15
+								},
+								"sink": {
+									"name": "SALUTATION_SUFFIX",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 16
+								},
+								"sink": {
+									"name": "FIRST_NAM",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 17
+								},
+								"sink": {
+									"name": "LAST_NAM",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 18
+								},
+								"sink": {
+									"name": "FATHER_S_NAM",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 19
+								},
+								"sink": {
+									"name": "BIRTH_NAM",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 20
+								},
+								"sink": {
+									"name": "MOTHER_S_NAM",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 21
+								},
+								"sink": {
+									"name": "BIRTH_DATE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 22
+								},
+								"sink": {
+									"name": "BIRTH_PLACE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 23
+								},
+								"sink": {
+									"name": "GENDER",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 24
+								},
+								"sink": {
+									"name": "ENABLE_AFFILIATION",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 25
+								},
+								"sink": {
+									"name": "AFFILIATION_TYPE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 26
+								},
+								"sink": {
+									"name": "AFFILIATED_WITH",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 27
+								},
+								"sink": {
+									"name": "MARITAL_STATUS",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 28
+								},
+								"sink": {
+									"name": "COMPANY_NAM",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 29
+								},
+								"sink": {
+									"name": "TRADE_NAM",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 30
+								},
+								"sink": {
+									"name": "COMPANY_DEPARTMENT",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 31
+								},
+								"sink": {
+									"name": "CLIENT_NUMBER",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 32
+								},
+								"sink": {
+									"name": "REG_NUMBER_TYPE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 33
+								},
+								"sink": {
+									"name": "REG_NUMBER",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 34
+								},
+								"sink": {
+									"name": "REG_DETAILS",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 35
+								},
+								"sink": {
+									"name": "ITN",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 36
+								},
+								"sink": {
+									"name": "SOCIAL_NUMBER",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 37
+								},
+								"sink": {
+									"name": "TAX_POSITION",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 38
+								},
+								"sink": {
+									"name": "PROFESSION",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 39
+								},
+								"sink": {
+									"name": "LANGUAGE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 40
+								},
+								"sink": {
+									"name": "CITIZENSHIP",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 41
+								},
+								"sink": {
+									"name": "DATE_EXPIRE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 42
+								},
+								"sink": {
+									"name": "DATE_OPEN",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 43
+								},
+								"sink": {
+									"name": "TR_TITLE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 44
+								},
+								"sink": {
+									"name": "TR_FIRST_NAM",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 45
+								},
+								"sink": {
+									"name": "TR_LAST_NAM",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 46
+								},
+								"sink": {
+									"name": "COUNTRY",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 47
+								},
+								"sink": {
+									"name": "ADDRESS_ZIP",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 48
+								},
+								"sink": {
+									"name": "STATE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 49
+								},
+								"sink": {
+									"name": "CITY",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 50
+								},
+								"sink": {
+									"name": "ADDRESS_LINE_1",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 51
+								},
+								"sink": {
+									"name": "ADDRESS_LINE_2",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 52
+								},
+								"sink": {
+									"name": "ADDRESS_LINE_3",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 53
+								},
+								"sink": {
+									"name": "ADDRESS_LINE_4",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 54
+								},
+								"sink": {
+									"name": "PHONE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 55
+								},
+								"sink": {
+									"name": "PHONE_H",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 56
+								},
+								"sink": {
+									"name": "PHONE_M",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 57
+								},
+								"sink": {
+									"name": "FAX",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 58
+								},
+								"sink": {
+									"name": "FAX_H",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 59
+								},
+								"sink": {
+									"name": "E_MAIL",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 60
+								},
+								"sink": {
+									"name": "URL",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 61
+								},
+								"sink": {
+									"name": "DELIVERY_TYPE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 62
+								},
+								"sink": {
+									"name": "TR_COMPANY_NAM",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 63
+								},
+								"sink": {
+									"name": "ADD_DATE_01",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 64
+								},
+								"sink": {
+									"name": "ADD_DATE_02",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 65
+								},
+								"sink": {
+									"name": "ADD_INFO_01",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 66
+								},
+								"sink": {
+									"name": "ADD_INFO_02",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 67
+								},
+								"sink": {
+									"name": "ADD_INFO_03",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 68
+								},
+								"sink": {
+									"name": "ADD_INFO_04",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 69
+								},
+								"sink": {
+									"name": "IS_READY",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "file_path",
+									"type": "String"
+								},
+								"sink": {
+									"name": "file_path",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "etl_job_date",
+									"type": "String"
+								},
+								"sink": {
+									"name": "etl_job_date",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "RafflesCsvCardClient2",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "RafflesSynapseTable",
+						"type": "DatasetReference",
+						"parameters": {
+							"schema": "LandingBank",
+							"table": "CardClient"
+						}
+					}
+				]
+			}
+		],
+		"parameters": {
+			"partition": {
+				"type": "string",
+				"defaultValue": "/2022/08/30"
+			}
+		},
+		"folder": {
+			"name": "SpecificPipeline"
+		},
+		"annotations": []
+	}
+}
