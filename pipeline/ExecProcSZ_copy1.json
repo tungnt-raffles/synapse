@@ -1,0 +1,48 @@
+{
+	"name": "ExecProcSZ_copy1",
+	"properties": {
+		"description": "Standardized Zone",
+		"activities": [
+			{
+				"name": "ExecuteFactProcedureCuratedZone",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "ExecuteDimProcedureCuratedZone",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "ExecProcCZFact",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "ExecuteDimProcedureCuratedZone",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "ExecProcCZDim",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"parameters": {
+			"ETL_DATE": {
+				"type": "int",
+				"defaultValue": 20220831
+			}
+		},
+		"annotations": []
+	}
+}
