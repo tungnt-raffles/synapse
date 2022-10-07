@@ -3,122 +3,6 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "StandardizedZone",
-				"type": "ForEach",
-				"dependsOn": [
-					{
-						"activity": "LandingZone",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"userProperties": [],
-				"typeProperties": {
-					"items": {
-						"value": "@pipeline().parameters.procedure_standardized_zone",
-						"type": "Expression"
-					},
-					"isSequential": false,
-					"activities": [
-						{
-							"name": "ExecuteProcedureStandardizedZone_HUB",
-							"type": "ExecutePipeline",
-							"dependsOn": [],
-							"userProperties": [],
-							"typeProperties": {
-								"pipeline": {
-									"referenceName": "ExecuteProcedureSynapse",
-									"type": "PipelineReference"
-								},
-								"waitOnCompletion": true
-							}
-						},
-						{
-							"name": "ExecuteProcedureStandardizedZone_Link",
-							"type": "ExecutePipeline",
-							"dependsOn": [
-								{
-									"activity": "ExecuteProcedureStandardizedZone_HUB",
-									"dependencyConditions": [
-										"Succeeded"
-									]
-								}
-							],
-							"userProperties": [],
-							"typeProperties": {
-								"pipeline": {
-									"referenceName": "ExecProcSZLink",
-									"type": "PipelineReference"
-								},
-								"waitOnCompletion": true
-							}
-						}
-					]
-				}
-			},
-			{
-				"name": "CuratedZone",
-				"type": "ForEach",
-				"dependsOn": [
-					{
-						"activity": "StandardizedZone",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"userProperties": [],
-				"typeProperties": {
-					"items": {
-						"value": "@pipeline().parameters.procedure_curated_zone",
-						"type": "Expression"
-					},
-					"isSequential": false,
-					"activities": [
-						{
-							"name": "ExecuteFactProcedureCuratedZone",
-							"type": "ExecutePipeline",
-							"dependsOn": [
-								{
-									"activity": "ExecuteDimProcedureCuratedZone",
-									"dependencyConditions": [
-										"Succeeded"
-									]
-								}
-							],
-							"userProperties": [],
-							"typeProperties": {
-								"pipeline": {
-									"referenceName": "ExecProcCZFact",
-									"type": "PipelineReference"
-								},
-								"waitOnCompletion": true,
-								"parameters": {
-									"ETL_DATE": {
-										"value": "@item()",
-										"type": "Expression"
-									}
-								}
-							}
-						},
-						{
-							"name": "ExecuteDimProcedureCuratedZone",
-							"type": "ExecutePipeline",
-							"dependsOn": [],
-							"userProperties": [],
-							"typeProperties": {
-								"pipeline": {
-									"referenceName": "ExecProcCZDim",
-									"type": "PipelineReference"
-								},
-								"waitOnCompletion": true
-							}
-						}
-					]
-				}
-			},
-			{
 				"name": "RefreshPowerBI",
 				"type": "WebActivity",
 				"dependsOn": [
@@ -219,6 +103,46 @@
 							"type": "Expression"
 						}
 					}
+				}
+			},
+			{
+				"name": "StandardizedZone",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "LandingZone",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "ExecProcSZ",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "CuratedZone",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "StandardizedZone",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "ExecProcCZ",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
 				}
 			}
 		],

@@ -1,0 +1,54 @@
+{
+	"name": "ExecProcSZ",
+	"properties": {
+		"description": "Standardized Zone",
+		"activities": [
+			{
+				"name": "ExecuteProcedureStandardizedZone_HUB",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "ExecuteProcedureSynapse",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
+						"ETL_DATE": {
+							"value": "@pipeline().parameters.ETL_DATE",
+							"type": "Expression"
+						}
+					}
+				}
+			},
+			{
+				"name": "ExecuteProcedureStandardizedZone_Link",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "ExecuteProcedureStandardizedZone_HUB",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "ExecProcSZLink",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"parameters": {
+			"ETL_DATE": {
+				"type": "int",
+				"defaultValue": 20220831
+			}
+		},
+		"annotations": []
+	}
+}
